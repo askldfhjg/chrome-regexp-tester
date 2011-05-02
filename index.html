@@ -4,10 +4,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>RegExp Creator</title>
         <link rel="stylesheet" type="text/css" href="css/main.css" /> 
-        <script type="text/javascript" src="js/jquery.js"></script>
     </head>
     <body>
-        
+
         <div class="main">
             <header>
                 <h1>RegExp</h1>
@@ -15,6 +14,7 @@
             <section class="form-inputs">
                 <form id="regexp-form" action="#" onsubmit="return false;">
                     <label for="pattern" class="row-label">Pattern</label>
+                    <img src="img/help-3.png" alt="Help - patterns" id="patterns-help" class="help-dialog" alt="Hint" title="Open patterns hint dialog"/>
                     <textarea type="text" required="true" name="pattern" id="pattern"></textarea>
 
                     <div class="options">
@@ -30,11 +30,133 @@
 
                     </div>
 
-                    <label for="pattern" class="row-label">Search text</label>
-                    <textarea type="text" name="stxt" id="stxt"></textarea>
+                    <label for="body" class="row-label">Search text</label>
+                    <textarea type="text" name="body" id="body"></textarea>
+
+                    <label for="replace" class="row-label">Replace</label>
+                    <img src="img/help-3.png" alt="Help - replace" id="replace-help" class="help-dialog" alt="Hint" title="Open replacements hint dialog"/>
+                    <input type="text" name="replace" id="replace" value=""/>
+
                 </form>
+                <div class="results-tabs">
+                    <div class="tabs">
+                        <a href="#match" class="current">Match</a>
+                        <a href="#replace">Replace</a>
+                    </div>
+                    <div class="content">
+                        <div class="match current">
+
+                        </div>
+                        <div class="replace">
+
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
-        
+        <div class="popupPanelGlass">
+            <div id="patterns-dialog" class="dialog-container">
+                <h2>Patterns</h2>
+                <div class="dialog-content">
+
+                    As a pattern you can use one of fallowed:
+                    <ul class="patterns-list">
+                        <li>
+                            <span>[abc]</span>Find any character between the brackets
+                        </li>
+                        <li>
+                            <span>[^abc]</span>Find any character not between the brackets
+                        </li>
+                        <li>
+                            <span>[0-9]</span>Find any digit from 0 to 9
+                        </li>
+                        <li>
+                            <span>[A-Z]</span>Find any character from uppercase A to uppercase Z
+                        </li>
+                        <li>
+                            <span>[a-z]</span>Find any character from lowercase a to lowercase z
+                        </li>
+                        <li>
+                            <span>[A-z]</span>Find any character from uppercase A to lowercase z
+                        </li>
+                        <li>
+                            <span>[adgk]</span>Find any character in the given set
+                        </li>
+                        <li>
+                            <span>[^adgk]</span>Find any character outside the given set
+                        </li>
+                        <li>
+                            <span>(red|blue|green)</span>Find any of the alternatives specified
+                        </li>
+                    </ul>
+
+                    <ul class="patterns-list">
+                        <li>
+                            <span>.</span>Find a single character, except newline or line terminator
+                        </li>
+                        <li>
+                            <span>\w</span>Find a word character
+                        </li>
+                        <li>
+                            <span>\W</span>Find a non-word character
+                        </li>
+                        <li>
+                            <span>\d</span>Find a digit
+                        </li>
+                        <li>
+                            <span>\D</span>Find a non-digit character
+                        </li>
+                        <li>
+                            <span>\s</span>Find a whitespace character
+                        </li>
+                        <li>
+                            <span>\S</span>Find a non-whitespace character
+                        </li>
+                        <li>
+                            <span>\b</span>Find a match at the beginning/end of a word
+                        </li>
+                        <li>
+                            <span>\B</span>Find a match not at the beginning/end of a word
+                        </li>
+                        <li>
+                            <span>\0</span>Find a NUL character
+                        </li>
+                        <li>
+                            <span>\n</span>Find a new line character
+                        </li>
+                        <li>
+                            <span>\f</span>Find a form feed character
+                        </li>
+                        <li>
+                            <span>\r</span>Find a carriage return character
+                        </li>
+                        <li>
+                            <span>\t</span>Find a tab character
+                        </li>
+                        <li>
+                            <span>\v</span>Find a vertical tab character
+                        </li>
+                        <li>
+                            <span>\xxx</span>Find the character specified by an octal number xxx
+                        </li>
+                        <li>
+                            <span>\xdd</span>Find the character specified by a hexadecimal number dd
+                        </li>
+                        <li>
+                            <span>\uxxxx</span>Find the Unicode character specified by a hexadecimal number xxxx
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="dialog-buttons">
+                    <div class="button-strip">
+                        <button class="cancel">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
