@@ -34,19 +34,27 @@
         var replace = document.querySelector('input[name="replace"]').value;
 
         var match = body.match(r);
+        console.dir(match)
+        var matchCount = 0;
+        if( match != null ){
+            matchCount = match.length;
+        }
+        
+        document.querySelector('#match-counter').innerHTML = matchCount;
+        
         replace = replace.replace(/\$0/, match);
-
-        body = body.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
-
-        var highlight = body.replace(r,'<span class="highlight">$1</span>');
-        highlight = highlight.replace(/\n/gm,'<br/>');
+        
+        var highlight = body.replace(r, "[rexp-highlight]$1[/rexp-highlight]");
+        highlight = highlight.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
+        highlight = highlight.replace(/\[rexp-highlight\]([^\[]*)\[\/rexp-highlight]/g, '<span class="highlight">$1</span>');
 
         var matchDiv = document.querySelector('div.results-tabs > div.content > div.match');
         matchDiv.innerHTML = highlight;
         
-        var replacedMatch = body.replace(r,'<span class="replaceHighlight">'+replace+'</span>');
+        var replacedMatch = body.replace(r,'[rexp-highlight]'+replace+'[/rexp-highlight]');
+        replacedMatch = replacedMatch.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
+        replacedMatch = replacedMatch.replace(/\[rexp-highlight\]([^\[]*)\[\/rexp-highlight]/g, '<span class="replaceHighlight">$1</span>');
         var replaceDiv = document.querySelector('div.results-tabs > div.content > div.replace');
-        replacedMatch = replacedMatch.replace(/\n/gm,'<br/>');
         replaceDiv.innerHTML = replacedMatch;
     }
 
@@ -56,9 +64,16 @@
             doTest({skipTest:true})
         } else {
             saveState();
+            resetResults();
         }
     }
-
+    
+    function resetResults(){
+        document.querySelector('div.results-tabs > div.content > div.replace').innerHTML = '';
+        document.querySelector('div.results-tabs > div.content > div.match').innerHTML = '';
+        document.querySelector('#match-counter').innerHTML = 0;
+    }
+    
     function isPatternValid(){
         var input = document.querySelector('textarea[name="pattern"]');
         var pattern = input.value;
@@ -146,46 +161,27 @@
 
     function openHint(e){
         var overlay = document.querySelector('div.popupPanelGlass');
-        if( overlay == null ){
-            overlay = document.createElement('div');
-            overlay.className = 'popupPanelGlass';
-            function resizeOverlay(){
-                overlay.style.width = document.width+'px';
-                overlay.style.height = document.height+'px';
-            }
-            resizeOverlay();
-            document.body.addEventListener('resize', resizeOverlay, false);
-            document.body.appendChild(overlay);
-        }
-        overlay.style.display = 'block';
+        overlay.classList.add('visible');
         var id = this.id.replace('#','');
         switch( id ){
             case 'patterns-help':
-                patternsHelp();
+                document.querySelector('#patterns-dialog').style.display = 'block';
                 break;
         }
     }
 
     function patternsHelp(){
-        var wrapper = document.createElement('div');
-        wrapper.className = 'dialog-wrapper';
-
-        var dialog = document.createElement('div');
-        dialog.className = 'dialog-content';
-
-        var titleWrapper = document.createElement('div');
-        titleWrapper.className = 'dialog-title';
-        var title = document.createElement('h2');
-        title.innerHTML = 'Patterns';
-        titleWrapper.appendChild(title);
-
-        wrapper.appendChild(titleWrapper);
-        document.body.appendChild(wrapper);
+        
     }
 
     //observe hint fields
     document.querySelector('#patterns-help').addEventListener('click', openHint, true);
-
+    //observe dialogs buttons
+    document.querySelector('#patterns-dialog button.cancel').addEventListener('click', function(){
+        var overlay = document.querySelector('div.popupPanelGlass');
+        overlay.classList.remove('visible');
+        document.querySelector('#patterns-dialog').style.display = 'none';
+    }, false);
     restoreState();
     testPattern({});
 })();
