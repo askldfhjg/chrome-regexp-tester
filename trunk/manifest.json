@@ -1,0 +1,14 @@
+{
+  "name": "RegExp Creator",
+  "version": "0.0.1",
+  "description": "Create and test regexp patterns.",
+  "icons": { 
+      "32": "img/icon32.png",
+      "48": "img/icon48.png"
+  },
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  }
+}
