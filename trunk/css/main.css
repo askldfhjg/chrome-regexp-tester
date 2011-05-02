@@ -50,6 +50,7 @@ span.highlight{
     box-shadow: rgba(255, 0, 0, 0.4) 2px 2px;
     background-color: rgba(255, 0, 0, 0.2);
     border-radius: 2px;
+    min-width: 2px;
 }
 span.replaceHighlight{
     text-shadow: silver 1px 1px;
@@ -113,16 +114,21 @@ img.help-dialog:hover{
 div.popupPanelGlass{
     -webkit-box-align: center;
     -webkit-box-pack: center;
-    -webkit-transition: 0.25s opacity;
+    -webkit-transition: 0.25s opacity, 0.5s z-index;
     background: -webkit-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7));
     bottom: 0;
-    display: -webkit-box;
     left: 0;
     padding: 20px;
     padding-bottom: 130px;
     position: fixed;
     right: 0;
     top: 0;
+    z-index: -1;
+    opacity: 0;
+    display: -webkit-box;
+}
+div.popupPanelGlass.visible{
+    opacity: 1;
     z-index: 10;
 }
 .hidden{
@@ -137,6 +143,7 @@ div.dialog-container{
     min-width: 400px;
     padding: 0;
     position: relative;
+    display: none;
 }
 div.dialog-container > h2 {
     background: -webkit-linear-gradient(white, #F8F8F8);
@@ -151,6 +158,8 @@ div.dialog-container > h2 {
 }
 div.dialog-content{
     padding: 10px 15px 5px 15px;
+    overflow: auto;
+    height: 400px;
 }
 div.dialog-buttons{
     -webkit-box-align: center;
@@ -179,4 +188,35 @@ button, input[type="button"], input[type="submit"] {
     margin-bottom: 0px;
     min-width: 4em;
     padding: 3px 12px 3px 12px;
+    cursor: pointer;
+}
+div.dialog-content ul.patterns-list{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+div.dialog-content ul.patterns-list > li{
+    padding: 3px 0;
+    font-size: 12px;
+    white-space: nowrap;
+}
+div.dialog-content ul.patterns-list > li > span{
+    display: inline-block;
+    width: 100px;
+}
+span.patters-group{
+    font-weight: bold;
+    display: block;
+}
+footer{
+    margin-top: 25px;
+    width: 100%;
+    height: 40px;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-orient: horizontal;
+}
+footer > div {
+    margin-left: 25px;
 }

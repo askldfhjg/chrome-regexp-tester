@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>RegExp Creator</title>
+        <title>RegExp tester</title>
         <link rel="stylesheet" type="text/css" href="css/main.css" /> 
     </head>
     <body>
 
         <div class="main">
             <header>
-                <h1>RegExp</h1>
+                <h1>RegExp tester</h1>
             </header>
             <section class="form-inputs">
                 <form id="regexp-form" action="#" onsubmit="return false;">
@@ -34,13 +34,13 @@
                     <textarea type="text" name="body" id="body"></textarea>
 
                     <label for="replace" class="row-label">Replace</label>
-                    <img src="img/help-3.png" alt="Help - replace" id="replace-help" class="help-dialog" alt="Hint" title="Open replacements hint dialog"/>
+                    <!--                    <img src="img/help-3.png" alt="Help - replace" id="replace-help" class="help-dialog" alt="Hint" title="Open replacements hint dialog"/>-->
                     <input type="text" name="replace" id="replace" value=""/>
 
                 </form>
                 <div class="results-tabs">
                     <div class="tabs">
-                        <a href="#match" class="current">Match</a>
+                        <a href="#match" class="current">Match (<span id="match-counter">0</span>)</a>
                         <a href="#replace">Replace</a>
                     </div>
                     <div class="content">
@@ -58,8 +58,8 @@
             <div id="patterns-dialog" class="dialog-container">
                 <h2>Patterns</h2>
                 <div class="dialog-content">
-
-                    As a pattern you can use one of fallowed:
+                    As a pattern you can use following expressions:
+                    <span class="patters-group">Brackets</span>
                     <ul class="patterns-list">
                         <li>
                             <span>[abc]</span>Find any character between the brackets
@@ -89,7 +89,7 @@
                             <span>(red|blue|green)</span>Find any of the alternatives specified
                         </li>
                     </ul>
-
+                    <span class="patters-group">Metacharacters</span>
                     <ul class="patterns-list">
                         <li>
                             <span>.</span>Find a single character, except newline or line terminator
@@ -119,7 +119,7 @@
                             <span>\B</span>Find a match not at the beginning/end of a word
                         </li>
                         <li>
-                            <span>\0</span>Find a NUL character
+                            <span>\0</span>Find a NULL character
                         </li>
                         <li>
                             <span>\n</span>Find a new line character
@@ -146,7 +146,39 @@
                             <span>\uxxxx</span>Find the Unicode character specified by a hexadecimal number xxxx
                         </li>
                     </ul>
-
+                    <span class="patters-group">Quantifiers</span>
+                    <ul class="patterns-list">
+                        <li>
+                            <span>n+</span>Matches any string that contains at least one n
+                        </li>
+                        <li>
+                            <span>n*</span>Matches any string that contains zero or more occurrences of n
+                        </li>
+                        <li>
+                            <span>n?</span>Matches any string that contains zero or one occurrences of n
+                        </li>
+                        <li>
+                            <span>n{X}</span>Matches any string that contains a sequence of X n's
+                        </li>
+                        <li>
+                            <span>n{X,Y}</span>Matches any string that contains a sequence of X to Y n's
+                        </li>
+                        <li>
+                            <span>n{X,}</span>Matches any string that contains a sequence of at least X n's
+                        </li>
+                        <li>
+                            <span>n$</span>Matches any string with n at the end of it
+                        </li>
+                        <li>
+                            <span>^n</span>Matches any string with n at the beginning of it
+                        </li>
+                        <li>
+                            <span>?=n</span>Matches any string that is followed by a specific string n
+                        </li>
+                        <li>
+                            <span>?!n</span>Matches any string that is not followed by a specific string n
+                        </li>
+                    </ul>
                 </div>
                 <div class="dialog-buttons">
                     <div class="button-strip">
@@ -155,7 +187,17 @@
                 </div>
             </div>
         </div>
-
+        <footer>
+            <div class="credits">
+    		Copyright © 2011 Paweł Psztyć
+            </div>
+            <div class="source">
+			Source code at <a href="http://code.google.com/p/chrome-regexp-tester/">Google Code Hosting</a> under Apache License.
+            </div>
+            <div class="icons">
+			Icons from <a href="http://openiconlibrary.sourceforge.net/">Open Icon Library</a>
+            </div>
+        </footer>
 
         <script type="text/javascript" src="js/main.js"></script>
     </body>
