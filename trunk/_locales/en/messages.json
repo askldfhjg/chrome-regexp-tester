@@ -1,0 +1,86 @@
+{
+    "extensionName": {
+        "message": "RegExp Tester App",
+        "description":"Extension main name."
+    },
+    "extensionDesc": {
+        "message": "Create and test regular expressions.",
+        "description":"Extension main description."
+    },
+    "titleIndex":{
+        "message": "RegExp tester",
+        "description":""
+    },
+    "indexHeaderMain":{
+        "message": "RegExp tester",
+        "description":""
+    },
+    "labelPattern":{
+        "message": "Pattern",
+        "description":""
+    },
+    "labelGlobalOption":{
+        "message": "global",
+        "description":""
+    },
+    "labelCiOption":{
+        "message": "case-insensitive",
+        "description":""
+    },
+    "labelMultilineOption":{
+        "message": "multiline",
+        "description":""
+    },
+    "labelSearch":{
+        "message": "Search text",
+        "description":""
+    },
+    "labelReplace":{
+        "message": "Replace",
+        "description":""
+    },
+    "dialogTitlePatterns":{
+        "message": "Patterns",
+        "description":""
+    },
+    "dialogPatternsExplMain":{
+        "message": "As a pattern you can use following expressions:",
+        "description":""
+    },
+    "dialogPatternsBrackets":{
+        "message": "Brackets",
+        "description":""
+    },
+    "dialogClose":{
+        "message": "Close",
+        "description":""
+    },
+    "titlehelpPatterns":{
+        "message": "Open patterns hint dialog",
+        "description":""
+    },
+    "titlelabelGlobalOption":{
+        "message": "Perform a global match (find all matches rather than stopping after the first match)",
+        "description":""
+    },
+    "titlelabelCiOption":{
+        "message": "Perform case-insensitive matching",
+        "description":""
+    },
+    "titlelabelMultilineOption":{
+        "message": "Perform multiline matching",
+        "description":""
+    },
+    "althelpPatterns":{
+        "message": "Help - patterns",
+        "description":""
+    },
+    "tabHeaderMatch":{
+        "message": "Match",
+        "description":""
+    },
+    "tabHeaderReplace":{
+        "message": "Replace",
+        "description":""
+    }
+}

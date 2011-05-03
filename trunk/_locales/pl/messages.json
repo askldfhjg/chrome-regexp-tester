@@ -1,0 +1,86 @@
+{
+    "extensionName": {
+        "message": "RegExp Tester App",
+        "description":"Extension main name."
+    },
+    "extensionDesc": {
+        "message": "Stwórz i testuj wyrażenia regularne.",
+        "description":"Extension main description."
+    },
+    "titleIndex":{
+        "message": "RegExp tester",
+        "description":""
+    },
+    "indexHeaderMain":{
+        "message": "RegExp tester",
+        "description":""
+    },
+    "labelPattern":{
+        "message": "Wyrażenie",
+        "description":""
+    },
+    "labelGlobalOption":{
+        "message": "globelne",
+        "description":""
+    },
+    "labelCiOption":{
+        "message": "bez rozróżnienia wielkości znaków",
+        "description":""
+    },
+    "labelMultilineOption":{
+        "message": "wiele linii",
+        "description":""
+    },
+    "labelSearch":{
+        "message": "Tekst wyszukiwania",
+        "description":""
+    },
+    "labelReplace":{
+        "message": "Zamień na",
+        "description":""
+    },
+    "dialogTitlePatterns":{
+        "message": "Wyrażenia",
+        "description":""
+    },
+    "dialogPatternsExplMain":{
+        "message": "Możesz użyć poniższych wyrażeń:",
+        "description":""
+    },
+    "dialogPatternsBrackets":{
+        "message": "Brackets",
+        "description":""
+    },
+    "dialogClose":{
+        "message": "Zamknij",
+        "description":""
+    },
+    "titlehelpPatterns":{
+        "message": "Otwórz pomoc dot. wyrażeń",
+        "description":""
+    },
+    "titlelabelGlobalOption":{
+        "message": "Perform a global match (find all matches rather than stopping after the first match)",
+        "description":""
+    },
+    "titlelabelCiOption":{
+        "message": "Perform case-insensitive matching",
+        "description":""
+    },
+    "titlelabelMultilineOption":{
+        "message": "Perform multiline matching",
+        "description":""
+    },
+    "althelpPatterns":{
+        "message": "Pomoc wyrażenia",
+        "description":""
+    },
+    "tabHeaderMatch":{
+        "message": "Znalezione",
+        "description":""
+    },
+    "tabHeaderReplace":{
+        "message": "Zamienione",
+        "description":""
+    }
+}

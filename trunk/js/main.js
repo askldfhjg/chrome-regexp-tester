@@ -1,4 +1,40 @@
 (function(){
+    
+    //
+    // i18n.
+    //
+    function translate(){
+        var contents = document.querySelectorAll('*[i18n-content]');
+        var len = contents.length;
+        for( var i=0, key = null, msg=null; i<len; i++ ){
+            var item = contents[i];
+            key = item.getAttribute('i18n-content');
+            msg = chrome.i18n.getMessage(key);
+            if(!msg){continue;}
+            item.innerHTML = msg;
+        }
+        var titles = document.querySelectorAll('*[i18n-title]');
+        len = titles.length;
+        for( var i=0, key = null, msg=null; i<len; i++ ){
+            var item = titles[i];
+            key = item.getAttribute('i18n-title');
+            msg = chrome.i18n.getMessage('title'+key);
+            if(!msg){continue;}
+            item.setAttribute('title', msg);
+        }
+        var alts = document.querySelectorAll('*[i18n-alt]');
+        len = alts.length;
+        for( var i=0, key = null, msg=null; i<len; i++ ){
+            var item = alts[i];
+            key = item.getAttribute('i18n-alt');
+            msg = chrome.i18n.getMessage('alt'+key);
+            if(!msg){continue;}
+            item.setAttribute('alt', msg);
+        }
+    }
+    
+    translate();
+    
     //tabs
     function tabClick(e){
         e.preventDefault();
@@ -34,7 +70,7 @@
         var replace = document.querySelector('input[name="replace"]').value;
 
         var match = body.match(r);
-        console.dir(match)
+        
         var matchCount = 0;
         if( match != null ){
             matchCount = match.length;
@@ -168,10 +204,6 @@
                 document.querySelector('#patterns-dialog').style.display = 'block';
                 break;
         }
-    }
-
-    function patternsHelp(){
-        
     }
 
     //observe hint fields
