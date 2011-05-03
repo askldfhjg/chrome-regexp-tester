@@ -1,7 +1,7 @@
 {
-  "name": "RegExp Tester App",
-  "version": "0.0.1",
-  "description": "Create and test regular expressions.",
+  "name": "__MSG_extensionName__",
+  "version": "0.1",
+  "description": "__MSG_extensionDesc__",
   "icons": { 
       "48": "img/emblem-brackets-48.png",
       "128": "img/emblem-brackets-128.png"
@@ -10,5 +10,6 @@
     "launch": {
       "local_path": "index.html"
     }
-  }
+  },
+  "default_locale": "en"
 }

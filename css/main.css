@@ -1,6 +1,7 @@
 body{
     /*    background: #778;*/
     font: 16px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    direction: __MSG_@@bidi_dir__;
 }
 h1{
 
