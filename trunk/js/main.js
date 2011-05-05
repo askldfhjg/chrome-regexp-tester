@@ -82,14 +82,14 @@
         
         var highlight = body.replace(r, "[rexp-highlight]$1[/rexp-highlight]");
         highlight = highlight.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
-        highlight = highlight.replace(/\[rexp-highlight\]([^\[]*)\[\/rexp-highlight]/g, '<span class="highlight">$1</span>');
+        highlight = highlight.replace(/\[rexp-highlight\](.*?)\[\/rexp-highlight\]/g, '<span class="highlight">$1</span>');
 
         var matchDiv = document.querySelector('div.results-tabs > div.content > div.match');
         matchDiv.innerHTML = highlight;
         
         var replacedMatch = body.replace(r,'[rexp-highlight]'+replace+'[/rexp-highlight]');
         replacedMatch = replacedMatch.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
-        replacedMatch = replacedMatch.replace(/\[rexp-highlight\]([^\[]*)\[\/rexp-highlight]/g, '<span class="replaceHighlight">$1</span>');
+        replacedMatch = replacedMatch.replace(/\[rexp-highlight\](.*?)\[\/rexp-highlight]/g, '<span class="replaceHighlight">$1</span>');
         var replaceDiv = document.querySelector('div.results-tabs > div.content > div.replace');
         replaceDiv.innerHTML = replacedMatch;
     }
