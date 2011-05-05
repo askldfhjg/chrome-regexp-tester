@@ -1,6 +1,6 @@
 {
   "name": "__MSG_extensionName__",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "__MSG_extensionDesc__",
   "icons": { 
       "48": "img/emblem-brackets-48.png",
