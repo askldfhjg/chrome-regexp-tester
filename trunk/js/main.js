@@ -124,7 +124,7 @@
             valid = false;
         }
         if( valid ){
-            input.setCustomValidity();
+            input.setCustomValidity('');
         }
         return valid;
     }
