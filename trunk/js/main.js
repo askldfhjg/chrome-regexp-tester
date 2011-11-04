@@ -81,14 +81,14 @@
         replace = replace.replace(/\$0/, match);
         
         var highlight = body.replace(r, "[rexp-highlight]$1[/rexp-highlight]");
-        highlight = highlight.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
+        highlight = highlight.replace(/</g, '&lt;').replace(/>/g, '&gt;') .replace(/ /g, '&nbsp;').replace(/\n/g, '<br/>');
         highlight = highlight.replace(/\[rexp-highlight\](.*?)\[\/rexp-highlight\]/g, '<span class="highlight">$1</span>');
 
         var matchDiv = document.querySelector('div.results-tabs > div.content > div.match');
         matchDiv.innerHTML = highlight;
         
         var replacedMatch = body.replace(r,'[rexp-highlight]'+replace+'[/rexp-highlight]');
-        replacedMatch = replacedMatch.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
+        replacedMatch = replacedMatch.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/ /g, '&nbsp;').replace(/\n/g, '<br/>');
         replacedMatch = replacedMatch.replace(/\[rexp-highlight\](.*?)\[\/rexp-highlight]/g, '<span class="replaceHighlight">$1</span>');
         var replaceDiv = document.querySelector('div.results-tabs > div.content > div.replace');
         replaceDiv.innerHTML = replacedMatch;
@@ -128,13 +128,63 @@
         }
         return valid;
     }
-
+    
+    function setClipboardValue(value){
+        //
+        // look for pattern like /SOME STR/g or/and m or/and i
+        //
+        var r = /^\/(.*)\/([gim]{0,3})$/ig;
+        var match = value.match(r);
+        if( !match || match.length == 0 ){
+            return value;
+        }
+        var inp = document.querySelectorAll('.options input[type="checkbox"]');
+        for( var i = 0; i < inp.length; i++ ){
+            inp[i].checked = false;
+        }
+        
+        var mod = value.replace(r, '$2');
+        value = value.replace(r, '$1');
+        
+        for( var _pos in mod ){
+            var letter = mod[_pos];
+            var radio = document.querySelector('.options input[value="'+letter+'"]');
+            if( !radio ) continue;
+            radio.checked = true;
+        }
+        return value;
+    }
+    
+    
     //observe inputs
     var inputs = document.querySelectorAll('input[type="checkbox"],input[type="text"],textarea');
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i];
         if( input.name == 'pattern' ){
             input.addEventListener('keyup', testPattern, false);
+            input.addEventListener('paste', function(e){
+                e.preventDefault();
+                e.returnValue = false;
+                
+                var clipboardValue = setClipboardValue(e.clipboardData.getData("Text"));
+                
+                var curr = this.value;
+                if(curr.length == 0){
+                    this.value = clipboardValue;
+                    return;
+                }
+                
+                var selEnd = this.selectionEnd;
+                var selStart = this.selectionStart;
+                
+                //replace selection
+                var prev = curr.slice(0,selStart);
+                var next = curr.slice(selEnd);
+                this.value = prev + clipboardValue + next;
+                this.selectionStart = selStart;
+                this.selectionEnd = selStart + clipboardValue.length;
+                
+            }, true);
         } else {
             var eventType = 'change';
             if(input.type != 'checkbox'){
