@@ -221,3 +221,7 @@ footer{
 footer > div {
     margin-left: 25px;
 }
+.results-tabs .match, .results-tabs .replace{
+    overflow: auto;
+    width: 100%;
+}
